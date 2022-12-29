@@ -26,10 +26,13 @@ class CityRepository{
         }
     }
 
-    async updateCity(data,cityId){
+    async updateCity(cityId,data){
         try {
+            console.log(data,cityId)
             const city = await City.findByPk(cityId)
-            city.name = data.name
+            console.log("dsdsd",city)
+            //city.name = data.name
+            await city.update({name:data.name})
             await city.save()
             return city
             
@@ -41,6 +44,7 @@ class CityRepository{
     async getCity(cityId){
         try {
             const city = await City.findByPk(cityId)
+            console.log(city)
             return city
         } catch (error) {
             console.log("Error from repository Layer")
