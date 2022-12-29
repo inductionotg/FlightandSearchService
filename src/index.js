@@ -7,16 +7,17 @@ const {City} = require("./models/index");
 const CityRepository = require('./repository/city-repository')
 
 
-const setupAndStartServer=async ()=>{
+const setupAndStartServer = async () =>{
     const app = express();
     app.use(bodyParser.json())
     app.use(bodyParser.urlencoded({extended:true}))
 
     app.listen(PORT, ()=>{
+        const repo = new CityRepository
+        //repo.createCity({name:'delhi'})
         console.log(`server started at ${PORT}`)
-        //const repo = new CityRepository
-        //repo.createCity({name:'mumbai'})
-        //repo.deleteCity(2)
+        
+        repo.deleteCity(8)
        
     })
 
