@@ -44,16 +44,43 @@ const destroy=async(req,res)=>{
 
 const update = async(req,res)=>{
     try {
+        const city = await cityService.updateCity(req.params.id,req.body)
+        return res.status(200).json({
+            sucess:true,
+            data:city,
+            message:'successfully updated the city',
+            error:{}
+        })
         
     } catch (error) {
+        console.log(error)
+        return res.status(500).json({
+            sucess:false,
+            err:error,
+            message:"Not able to update the city",
+            error:{}
+        })
         
     }
 }
 
 const getCity = async(req,res)=>{
     try {
-        
+        const city = await cityService.getCity(req.params.id)
+        return res.status(200).json({
+            sucess:true,
+            data:city,
+            message:'successfully got the city',
+            error:{}
+        })
     } catch (error) {
+        console.log(error)
+        return res.status(500).json({
+            sucess:false,
+            err:error,
+            message:"Not able to got the city",
+            error:{}
+        })
         
     }
 }
