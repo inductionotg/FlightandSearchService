@@ -17,7 +17,7 @@ class CityService{
     async destroyCity(cityId){
         try {
             const response = await cityRepository.destroyCity(cityId)
-            return true;
+            return response;
         } catch (error) {
             console.log("Error from service layer")
             throw {error}  
