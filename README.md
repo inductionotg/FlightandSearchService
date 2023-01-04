@@ -37,3 +37,19 @@
 ### City -> id,name,created_at, updated_at
 ### Airport -> id,names,address,city_id,creatde_At,updated_at
     RelationShip -> City has many airports and Airports belongs to a city( one to many)
+```
+npx:sequelize model:generate --name Airport --attributes name:String, address:String,cityId:integer
+```
+
+```
+Try to sync DB atleast once after creating and changing Models. Sync DB every time is a very heavy Task and it runs hell lot of queries. So an easy process to sync DB is to add if condition in index.js rather than commenting or uncommenting everytime
+
+### if Condition
+    ```
+    if(process.env.SYNC_DB){
+            db.sequelize.sync({alter:true})
+        }
+    ```
+
+Add SYNC_DB = true in .env file whenever you want to sync db 
+```
