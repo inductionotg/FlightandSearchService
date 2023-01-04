@@ -74,6 +74,17 @@ class CityRepository{
             throw {error}
         }
     }
+
+    async addAll(data){
+        console.log(data)
+        try {
+            const city = await City.bulkCreate(data)
+            return city
+        } catch (error) {
+            console.log("Error from repository Layer")
+            throw {error}
+        }
+    }
 }
 
 module.exports=CityRepository

@@ -104,11 +104,32 @@ const getAllCity = async(req,res)=>{
         })
     }
 }
+const addAllCity = async(req,res)=>{
+    try {
+        const city = await cityService.addAll(req.body)
+        console.log(city,req.body)
+        return res.status(200).json({
+            sucess:true,
+            data:city,
+            message:'successfully got all the city',
+            error:{}
+        })
+    } catch (error) {
+        console.log(error)
+        return res.status(500).json({
+            sucess:false,
+            err:error,
+            message:"Not able to got all the city",
+            error:{}
+        })
+    }
+}
 
 module.exports ={
     create,
     destroy,
     update,
     getCity,
-    getAllCity
+    getAllCity,
+    addAllCity
 }
