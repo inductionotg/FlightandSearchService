@@ -7,8 +7,11 @@ const {PORT} = require('./config/serverConfig');
 const db = require("./models/index")
 
 const CityRepository = require('./repository/city-repository')
-//const { Airplane } = require("./models/index")
-//const {City, Airport} = require("./models/index");
+const AirplaneRepository = require('./repository/index')
+
+const {City, Airport, Airplane} = require("./models/index");
+const  FlightService  = require('./services/flight-services')
+
 
 const ApiRoutes = require('./routes/index')
 const setupAndStartServer = async () =>{
