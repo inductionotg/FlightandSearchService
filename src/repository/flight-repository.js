@@ -29,6 +29,8 @@ class FlightRepository {
                 ]
             })
         }
+
+        Why not using above if stmt because it is adding extra nested filter so that's why we are using PriceFilter array
         */
         let pricefilter=[]
         if(data.minPrice){
