@@ -23,6 +23,27 @@ class FlightService {
         }
         
     }
+
+    async getFlight(data){
+        console.log(data)
+        try {
+            const flight = await this.FlightRepository.getFlight(data)
+            return flight
+        } catch (error) {
+            console.log("Error from Flight service")
+            throw {error}
+        }
+    }
+
+    async getAllFlight(data){
+        try {
+            const flight = await this.FlightRepository.getAllFlight(data)
+            return flight
+        } catch (error) {
+            console.log("Error from Flight service")
+            throw {error}
+        }
+    }
 }
 module.exports = FlightService
 
