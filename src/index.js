@@ -3,13 +3,14 @@ const express=require("express");
 const bodyParser = require('body-parser')
 
 const {PORT} = require('./config/serverConfig');
-const {City, Airport} = require("./models/index");
+
 const db = require("./models/index")
 
 const CityRepository = require('./repository/city-repository')
+//const { Airplane } = require("./models/index")
+//const {City, Airport} = require("./models/index");
 
 const ApiRoutes = require('./routes/index')
-
 const setupAndStartServer = async () =>{
     const app = express();
     app.use(bodyParser.json())
@@ -22,6 +23,16 @@ const setupAndStartServer = async () =>{
             db.sequelize.sync({alter:true})
         }
         app.use('/api',ApiRoutes)
+       /* await Airport.create({
+            name:'rourkela International Airport',
+            address:'Rourkela',
+            cityId:28
+        })*/
+
+        /*await Airplane.create({
+            modelNumber:'C295'
+        })
+        */
     })
 
 }
