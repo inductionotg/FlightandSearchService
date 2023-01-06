@@ -2,7 +2,11 @@ const { Flight } = require('../models/index')
 const { Op } = require('sequelize')
 class FlightRepository {
 
-
+    /**
+     * Why createFilter in repository?
+     * Because I am still using database  const --{ Op } = require('sequelize') 
+     * I can do in service section also but i am using sequelize operator , so thats why using in repository section
+     */
     #createFilter(data){
         let filter = {}
         //console.log("...",filter)
