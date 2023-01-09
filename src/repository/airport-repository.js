@@ -14,6 +14,7 @@ class AirportRepository extends CrudRepository{
     - async update(){
         It will call this specific update my function
     }
+    --If you want cutomisation then just override the function
     async createAirport(data){
         console.log(data)
         try {

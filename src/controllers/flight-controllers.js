@@ -1,10 +1,27 @@
+
 const { FlightService } = require('../services/index')
 
 const flightService = new FlightService();
 
 const create = async(req,res)=>{
     try {
-        const flight = await flightService.createFlight(req.body)
+        /**
+         * Current we are directly passing req.body , but we should not do this.Lets say in middleware we are filtering out the mandatory fields
+         * but what about non-mandatory fields and user is sendind that also and bloating the request.body.
+         * So we are creating a object 
+         * If user send some random data and making overall request bulky and I dont want that to expose to my serice layer and repository layer
+         * Its a good practice to destructure the request.body atleast in the create API
+         */
+        const flightRequestData={
+            flightNumber:req.body.flightNumber,
+            airplaneId:req.body.airplaneId,
+            departureAirportId:req.body.departureAirportId,
+            arrivalAirportId:req.body.arrivalAirportId,
+            arrivalTime:req.body.arrivalTime,
+            departureTime:req.body.departureTime,
+            price:req.body.price
+        }
+        const flight = await flightService.createFlight(flightRequestData)
         return res.status(201).json({
             data:flight,
             err:{},
