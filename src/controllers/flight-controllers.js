@@ -1,6 +1,6 @@
 
 const { FlightService } = require('../services/index')
-
+const {SucessCodes} = require('../utils/error-codes')
 const flightService = new FlightService();
 
 const create = async(req,res)=>{
@@ -22,7 +22,7 @@ const create = async(req,res)=>{
             price:req.body.price
         }
         const flight = await flightService.createFlight(flightRequestData)
-        return res.status(201).json({
+        return res.status(SucessCodes.CREATED).json({
             data:flight,
             err:{},
             success:true,
@@ -42,7 +42,7 @@ const create = async(req,res)=>{
 const getFlight = async(req,res)=>{
     try {
         const flight = await flightService.getFlight(req.params.id)
-        return res.status(200).json({
+        return res.status(SucessCodes.OK).json({
             data:flight,
             err:{},
             success:true,
@@ -62,7 +62,7 @@ const getFlight = async(req,res)=>{
 const getAllFlight = async(req,res)=>{
     try {
         const flight = await flightService.getAllFlight(req.query)
-        return res.status(200).json({
+        return res.status(SucessCodes.OK).json({
             data:flight,
             err:{},
             success:true,
