@@ -28,9 +28,17 @@ class CityRepository{
 
     async updateCity(cityId,data){
         try {
+            /**
+             * The belwo approach also works but will not return updated object 
+             * if we are using Pg then returning:true can be used else not
+             * const city = await City.update(data,{
+             * where:{
+             *      id:cityId
+             *      }
+             * })
+             */
             console.log(data,cityId)
             const city = await City.findByPk(cityId)
-            console.log("dsdsd",city)
             //city.name = data.name
             await city.update({name:data.name})
             await city.save()

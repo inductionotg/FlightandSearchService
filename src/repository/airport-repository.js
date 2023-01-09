@@ -1,8 +1,14 @@
-const {Airport} = require('../models/index')
-console.log(Airport)
+//const {Airport} = require('../models/index')
 
-class AirportRepository{
+const  CrudRepository  = require('./crud-repository')
+const { Airport } = require('../models/index')
+class AirportRepository extends CrudRepository{
 
+    /*
+    -Below approach is also correct but now I am using a base crud repository so that
+    -repeatation of code will not happen
+    - I am using inheritance here and calling base class using super
+    - I can create my method and It will override the base class method
     async createAirport(data){
         console.log(data)
         try {
@@ -12,6 +18,10 @@ class AirportRepository{
             console.log("Error from repository Layer")
             throw {error}
         }
+    }
+    */
+    constructor(){
+        super(Airport);
     }
 }
 
