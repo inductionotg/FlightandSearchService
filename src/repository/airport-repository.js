@@ -9,6 +9,11 @@ class AirportRepository extends CrudRepository{
     -repeatation of code will not happen
     - I am using inheritance here and calling base class using super
     - I can create my method and It will override the base class method
+    - For example .. if i have a specific 'UPDATE' function then it will not call the common upadte function , it will call my specific update function
+    -and this it will method override
+    - async update(){
+        It will call this specific update my function
+    }
     async createAirport(data){
         console.log(data)
         try {
