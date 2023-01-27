@@ -73,7 +73,7 @@ class FlightRepository {
             return flight
         } catch (error) {
             console.log("Error from Flight Repository Layer");
-            throw {error};
+            throw error;
         }
     }
 
@@ -86,7 +86,22 @@ class FlightRepository {
             return flight
         } catch (error) {
             console.log("Error from Flight Repository Layer");
-            throw {error};
+            throw error;
+        }
+    }
+
+    async update(flightId,data){
+        try {
+            const response =  await Flight.update(data,{
+                where:{
+                    id:flightId
+                }
+            })
+            console.log(response)
+            return response
+        } catch (error) {
+            console.log("Error from Flight Repository Layer",error);
+            throw error;
         }
     }
 
