@@ -98,7 +98,7 @@ class FlightRepository {
                 }
             })
             console.log(response)
-            return response
+            return true
         } catch (error) {
             console.log("Error from Flight Repository Layer",error);
             throw error;
